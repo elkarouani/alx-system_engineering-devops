@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for file in *.html; do
+  if [ -f "../$file" ] && [ "$file" -ot "../$file" ]; then
+    echo "Skipping $file: destination file is newer."
+  else
+    cp "$file" ..
+    echo "Copied $file to parent directory."
+  fi
+done
